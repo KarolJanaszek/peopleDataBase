@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users Base</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<h2 style="text-align: center">Users Base</h2>
+<br>
+<div class="container">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">E-Mail</th>
+            <th> </th>
+            <th> </th>
+            <th> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.id}" />
+            <td th:text="${user.name}" />
+            <td th:text="${user.email}" />
+            <td><button type="button" class="btn btn-success">Details</button></td>
+            <td><button type="button" class="btn btn-info">Edit</button></td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+        </tbody>
+    </table>
+
+
+</div>
+<br>
+<div>
+    <form action="/demo/form">
+        <input type="submit" value="Wróc">
+    </form>
+</div>
+
+</body>
+</html>
