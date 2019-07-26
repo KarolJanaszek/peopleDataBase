@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<h1>Users</h1>
+<div>
+    <form th:object="${user}"
+          th:action="@{/users}"
+          th:method="post">
+    <!-- th:value="${user.name}"} -->
+    <!-- action="/users" -->
+    <!-- methos="post" -->
+        <label>Name:</label>
+        <input type="text" th:field="*{name}">
+        <label>Email:</label>
+        <input type="email" th:field="*{email}">
+        <a href="/demo/usersBase"><input type="submit" value="Wyślij"></a>
+        <input type="hidden" th:field="*{id}">
+
+    </form>
+<br>
+    <form action="/demo/usersBase">
+        <input type="submit" class="btn btn-dark" value="Back">
+    </form>
+</div>
+
+</body>
+</html>

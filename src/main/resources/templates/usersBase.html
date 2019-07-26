@@ -26,20 +26,15 @@
             <td th:text="${user.id}" />
             <td th:text="${user.name}" />
             <td th:text="${user.email}" />
-            <td><button type="button" class="btn btn-success">Details</button></td>
-            <td><button type="button" class="btn btn-info">Edit</button></td>
-            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            <td><a th:href="'/demo//usersBase/'+${user.id}"><input type="submit" class="btn btn-success" value="Details"></a></button></td>
+            <td><a th:href="'/demo/usersBase/'+${user.id}+'/edit'"><input type="submit" class="btn btn-info" value="Edit"></a></td>
+            <td><a th:href="'/demo/usersBase/'+${user.id}+'/delete'"><input type="submit" class="btn btn-danger" value="Delete"></a></td>
         </tbody>
     </table>
-
+<!-- <input type="submit" class="btn btn-info">Edit</input> -->
 
 </div>
-<br>
-<div>
-    <form action="/demo/form">
-        <input type="submit" value="Wróc">
-    </form>
-</div>
-
-</body>
+<form action="/demo/form">
+    <input type="submit" class="btn btn-dark" value="Back">
+</form></body>
 </html>

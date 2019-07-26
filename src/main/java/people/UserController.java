@@ -3,10 +3,7 @@ package people;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/demo")
@@ -35,16 +32,47 @@ public class UserController {
         return "added";
     }
 
-    @GetMapping("/form")
-    public String addedUser(){
-        return "form";
+    @GetMapping("/")
+    public String addedUser(ModelMap map) {
+        map.put("user", new User());
+        return "/demo/form";
     }
 
     @GetMapping("/usersBase")
-    public String usersBase(ModelMap map){
-        map.put("users",userRepository.findAll());
+    public String usersBase(ModelMap map) {
+        map.put("users", userRepository.findAll());
         return "usersBase";
     }
+
+    @GetMapping("/usersBase/{id}/delete")
+    public String delete(@PathVariable Integer id) {
+        userRepository.deleteById(id);
+        return "redirect:/demo/usersBase";
+    }
+
+    @GetMapping("/usersBase/{id}/edit")
+    public String edit(@PathVariable Integer id, ModelMap map) {
+        map.put("user", userRepository.findById(id));
+        return "edit";
+    }
+
+    @GetMapping("/usersBase/{id}")
+    public String show(@PathVariable Integer id, ModelMap map) {
+        map.put("user", userRepository.findById(id).get());
+        return "show";
+    }
+
+    /*
+    @PostMapping("/users")
+    public String create(@RequestParam String name, @RequestParam String email) {
+        return null;
+    }
+
+    @PostMapping("/users")
+    public String create(@ModelAttribute User user) { //Robi to samo co wyżej ale krócej
+        return null;
+    }
+    */
 
     @ResponseBody
     @GetMapping("/all")
